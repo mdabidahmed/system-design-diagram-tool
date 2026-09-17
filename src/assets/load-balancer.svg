@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title desc">
+  <title id="title">Load Balancer</title>
+  <desc id="desc">Blue load balancer icon with a white branching network symbol.</desc>
+
+  <!-- Load balancer body -->
+  <path
+    d="M30 18
+       H226
+       L244 232
+       Q245 244 233 244
+       H23
+       Q11 244 12 232
+       Z"
+    fill="#2F80C8"/>
+
+  <!-- Subtle top edge -->
+  <path
+    d="M30 18 H226"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="4"
+    stroke-linecap="round"
+    opacity=".9"/>
+
+  <!-- Main branching line -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- vertical stem -->
+    <path d="M128 61 V119"/>
+
+    <!-- left branch -->
+    <path d="M128 88 L78 138"/>
+    <path d="M78 138 V118"/>
+    <path d="M78 138 H98"/>
+
+    <!-- right branch -->
+    <path d="M128 88 L178 138"/>
+    <path d="M178 138 V118"/>
+    <path d="M178 138 H158"/>
+
+    <!-- center downward branch -->
+    <path d="M128 119 V194"/>
+    <path d="M128 194 L106 172"/>
+    <path d="M128 194 L150 172"/>
+  </g>
+
+  <!-- Top node -->
+  <circle cx="128" cy="58" r="13" fill="#FFFFFF"/>
+</svg>

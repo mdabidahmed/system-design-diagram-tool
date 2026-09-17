@@ -1,0 +1,20 @@
+.canvasWrap {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+}
+
+.canvasWrap :global(.react-flow) {
+  background: var(--surface-2);
+}
+
+/* The app-wide `svg { max-width: 100%; display: block }` reset (meant for
+   the lesson diagrams) collapses React Flow's internal edges SVG — it's an
+   unsized, overflow-visible layer by design, and max-width:100% against
+   that zero intrinsic width clips every connector to invisible. Restore
+   default sizing for every SVG React Flow renders internally. */
+.canvasWrap :global(.react-flow svg) {
+  max-width: none;
+  display: inline;
+}

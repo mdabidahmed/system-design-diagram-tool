@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title desc">
+  <title id="title">Redis Cache</title>
+  <desc id="desc">Redis-style cache icon with stacked data layers.</desc>
+
+  <!-- Cache/database body -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linejoin="round">
+    <path d="M48 62 Q48 45 128 45 Q208 45 208 62 V194 Q208 211 128 211 Q48 211 48 194 Z" fill="#D82C20"/>
+
+    <!-- Top cache layer -->
+    <path d="M48 62 Q48 45 128 45 Q208 45 208 62 Q208 79 128 79 Q48 79 48 62 Z" fill="#E33427"/>
+
+    <!-- Middle layer -->
+    <path d="M48 104 Q48 121 128 121 Q208 121 208 104" />
+
+    <!-- Lower layer -->
+    <path d="M48 146 Q48 163 128 163 Q208 163 208 146" />
+  </g>
+
+  <!-- Redis cache marks -->
+  <g fill="#FFFFFF">
+    <circle cx="78" cy="61" r="5"/>
+    <circle cx="98" cy="61" r="5"/>
+    <circle cx="118" cy="61" r="5"/>
+  </g>
+
+  <!-- Small cache lightning mark -->
+  <path d="M137 91 L116 130 H132 L119 166 L151 121 H135 Z"
+        fill="#FFFFFF"/>
+</svg>

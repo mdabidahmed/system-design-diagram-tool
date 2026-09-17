@@ -1,0 +1,186 @@
+/**
+ * Design tokens — single source of truth for color, type, space, and motion.
+ * Light palette lives on bare :root. Dark redefines the same token names,
+ * guarded so an explicit data-theme always wins over the OS setting.
+ */
+
+:root {
+  /* ---- Brand ---- */
+  --color-accent-50: #eef2ff;
+  --color-accent-100: #e0e7ff;
+  --color-accent-300: #a3b4ff;
+  --color-accent-500: #4a63f0;
+  --color-accent-600: #2f47d8;
+  --color-accent-700: #2436ad;
+
+  --color-good-50: #e8faf1;
+  --color-good-100: #d3f4e2;
+  --color-good-500: #17a367;
+  --color-good-600: #128054;
+
+  --color-warn-50: #fff7e6;
+  --color-warn-500: #d98c11;
+
+  --color-danger-50: #fdecec;
+  --color-danger-500: #dd4949;
+
+  /* ---- Surfaces & ink (light) ---- */
+  --bg: #f3f5fa;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f5f7fc;
+  --surface-sunken: #eaeef7;
+  --border: #dde3f0;
+  --border-strong: #c3cce3;
+
+  --ink: #131a2e;
+  --ink-2: #384060;
+  --ink-muted: #6b7490;
+  --ink-faint: #96a0bd;
+
+  --accent: var(--color-accent-600);
+  --accent-ink: #ffffff;
+  --accent-soft: var(--color-accent-50);
+  --accent-soft-ink: var(--color-accent-700);
+
+  --good: var(--color-good-600);
+  --good-soft: var(--color-good-50);
+  --good-soft-ink: #0e5f3f;
+
+  --warn: var(--color-warn-500);
+  --warn-soft: var(--color-warn-50);
+
+  --danger: var(--color-danger-500);
+  --danger-soft: var(--color-danger-50);
+
+  --focus-ring: 0 0 0 3px rgba(74, 99, 240, 0.35);
+  --shadow-sm: 0 1px 2px rgba(19, 26, 46, 0.06);
+  --shadow-md: 0 6px 20px -8px rgba(19, 26, 46, 0.22);
+  --shadow-lg: 0 20px 45px -18px rgba(19, 26, 46, 0.35);
+
+  /* ---- Type ---- */
+  --font-sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.25rem;
+
+  /* ---- Space (4px base scale) ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* ---- Radius ---- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 420ms;
+
+  /* ---- Diagram palette (shared by all SVG diagrams) ---- */
+  --dg-line: var(--accent);
+  --dg-line-2: var(--good);
+  --dg-node-fill: var(--surface-2);
+  --dg-node-stroke: var(--ink-muted);
+  --dg-node-fill-accent: var(--accent-soft);
+  --dg-node-fill-good: var(--good-soft);
+  --dg-label: var(--ink-2);
+  --dg-label-muted: var(--ink-faint);
+  /* Matches the diagram canvas background exactly, so a label's halo
+     (see the Arrow primitive) reads as "text on the canvas", not a box. */
+  --dg-label-halo: var(--surface-2);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0e1a;
+    --bg-elevated: #10162a;
+    --surface: #121a30;
+    --surface-2: #161f3a;
+    --surface-sunken: #0c1224;
+    --border: #232e4d;
+    --border-strong: #33406a;
+
+    --ink: #eef1fb;
+    --ink-2: #c1c9e6;
+    --ink-muted: #8b93b8;
+    --ink-faint: #5b6489;
+
+    --accent: #8ea1ff;
+    --accent-ink: #0a0e1a;
+    --accent-soft: #1b2450;
+    --accent-soft-ink: #c3ceff;
+
+    --good: #4fd8a0;
+    --good-soft: #0f3327;
+    --good-soft-ink: #a4f1d3;
+
+    --warn: #f0b74e;
+    --warn-soft: #3a2a0d;
+
+    --danger: #f28282;
+    --danger-soft: #3a1414;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 6px 20px -8px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0e1a;
+  --bg-elevated: #10162a;
+  --surface: #121a30;
+  --surface-2: #161f3a;
+  --surface-sunken: #0c1224;
+  --border: #232e4d;
+  --border-strong: #33406a;
+
+  --ink: #eef1fb;
+  --ink-2: #c1c9e6;
+  --ink-muted: #8b93b8;
+  --ink-faint: #5b6489;
+
+  --accent: #8ea1ff;
+  --accent-ink: #0a0e1a;
+  --accent-soft: #1b2450;
+  --accent-soft-ink: #c3ceff;
+
+  --good: #4fd8a0;
+  --good-soft: #0f3327;
+  --good-soft-ink: #a4f1d3;
+
+  --warn: #f0b74e;
+  --warn-soft: #3a2a0d;
+
+  --danger: #f28282;
+  --danger-soft: #3a1414;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 20px -8px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+
+  color-scheme: dark;
+}
