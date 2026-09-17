@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import type { DesignerEdge, DesignerNode } from "../types";
+import type { DesignerEdge, DesignerEdgeData, DesignerNode } from "../types";
 
 interface Snapshot {
   nodes: DesignerNode[];
@@ -7,6 +7,14 @@ interface Snapshot {
 }
 
 const MAX_HISTORY = 60;
+
+// xyflow's Edge.data is typed optional, but every edge in this app is
+// always constructed with data populated — spreading `e.data` directly
+// makes every field of the clone look optional to TS, since it has to
+// account for the (never-actually-happening) undefined case.
+function cloneEdge(e: DesignerEdge): DesignerEdge {
+  return { ...e, data: { ...(e.data as DesignerEdgeData) } };
+}
 
 /**
  * Undo/redo over full {nodes, edges} snapshots. Callers push a snapshot
@@ -23,7 +31,7 @@ export function useHistory() {
   const commit = useCallback((snapshot: Snapshot) => {
     undoStack.current.push({
       nodes: snapshot.nodes.map((n) => ({ ...n, data: { ...n.data } })),
-      edges: snapshot.edges.map((e) => ({ ...e, data: { ...e.data } })),
+      edges: snapshot.edges.map(cloneEdge),
     });
     if (undoStack.current.length > MAX_HISTORY) undoStack.current.shift();
     redoStack.current = [];
@@ -35,7 +43,7 @@ export function useHistory() {
     if (!previous) return null;
     redoStack.current.push({
       nodes: current.nodes.map((n) => ({ ...n, data: { ...n.data } })),
-      edges: current.edges.map((e) => ({ ...e, data: { ...e.data } })),
+      edges: current.edges.map(cloneEdge),
     });
     forceTick((t) => t + 1);
     return previous;
@@ -46,7 +54,7 @@ export function useHistory() {
     if (!next) return null;
     undoStack.current.push({
       nodes: current.nodes.map((n) => ({ ...n, data: { ...n.data } })),
-      edges: current.edges.map((e) => ({ ...e, data: { ...e.data } })),
+      edges: current.edges.map(cloneEdge),
     });
     forceTick((t) => t + 1);
     return next;
